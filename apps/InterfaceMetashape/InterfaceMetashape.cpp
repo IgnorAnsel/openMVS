@@ -674,7 +674,7 @@ bool UndistortBrown(Image& imageData, uint32_t ID, const DistCoeff& dc, const St
 
 	// save undistorted image
 	imageData.image = imgUndist;
-	imageData.name = pathData + String::FormatString(_T("%05u.jpg"), ID);
+	imageData.name = pathData + String::FormatString(_T("%05u.jxl"), ID);
 	Util::ensureFolder(imageData.name);
 	return imageData.image.Save(imageData.name);
 }

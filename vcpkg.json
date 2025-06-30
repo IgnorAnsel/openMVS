@@ -14,14 +14,17 @@
       "default-features": false
     },
     "eigen3",
+    "libjxl",
     "libpng",
     {
       "name": "opencv",
       "features": [
         "eigen",
+        "jpegxl",
         "openexr"
       ]
     },
+    "pkgconf",
     "tiff",
     "vcglib",
     "zlib"

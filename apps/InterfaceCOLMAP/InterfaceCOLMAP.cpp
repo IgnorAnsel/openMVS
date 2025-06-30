@@ -187,7 +187,7 @@ bool Application::Initialize(size_t argc, LPCTSTR* argv)
 	const String strInputFileNameExt(Util::getFileExt(OPT::strInputFileName).ToLower());
 	OPT::bFromOpenMVS = (strInputFileNameExt == MVS_EXT);
 	if (OPT::bFromOpenMVS) {
-        OPT::strImageFolder = MAKE_PATH_SAFE(OPT::strImageFolder);
+        OPT::strImageFolder = MAKE_PATH_FULL(WORKING_FOLDER_FULL, OPT::strImageFolder);
 		if (OPT::strOutputFileName.empty())
 			OPT::strOutputFileName = Util::getFilePath(OPT::strInputFileName);
 	} else {

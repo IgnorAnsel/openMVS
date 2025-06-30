@@ -33,6 +33,9 @@
 // JPEG codec
 #cmakedefine _USE_JPG
 
+// JPEG-XL codec
+#cmakedefine _USE_JXL
+
 // PNG codec
 #cmakedefine _USE_PNG
 

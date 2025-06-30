@@ -896,6 +896,10 @@ CImage* CImage::Create(LPCTSTR szName, IMCREATE mode)
 	else if (_tcsncicmp(fext, _T(".jpg"), 4) == 0 || _tcsncicmp(fext, _T(".jpeg"), 5) == 0)
 		pImage = new CImageJPG();
 	#endif
+	#ifdef _IMAGE_JXL
+	else if (_tcsncicmp(fext, _T(".jxl"), 4) == 0)
+		pImage = new CImageJXL();
+	#endif
 	#ifdef _IMAGE_TIFF
 	else if (_tcsncicmp(fext, _T(".tif"), 4) == 0 || _tcsncicmp(fext, _T(".tiff"), 5) == 0)
 		pImage = new CImageTIFF();

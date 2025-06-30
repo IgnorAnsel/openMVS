@@ -33,6 +33,9 @@
 #ifdef _USE_JPG
 #define _IMAGE_JPG		// add JPG support
 #endif
+#ifdef _USE_JXL
+#define _IMAGE_JXL		// add JpegXL support
+#endif
 #ifdef _USE_TIFF
 #define _IMAGE_TIFF		// add TIFF support
 #endif
@@ -55,6 +58,9 @@
 #endif
 #ifdef _IMAGE_TIFF
 #include "ImageTIFF.h"
+#endif
+#ifdef _IMAGE_JXL
+#include "ImageJXL.h"
 #endif
 #include "PLY.h"
 #include "OBJ.h"
