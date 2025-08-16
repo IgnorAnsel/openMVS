@@ -1775,7 +1775,7 @@ void DepthMapsData::DenseFuseDepthMaps(PointCloud& pointcloud, bool bEstimateCol
 			useMask.memset(0);
 		}
 		ASSERT(!depthData.IsEmpty());
-		const Image& imageData = *depthData.images.front().pImageData;
+		MAYBEUNUSED const Image& imageData = *depthData.images.front().pImageData;
 		ASSERT(&imageData-scene.images.data() == idxImage);
 		ASSERT(depthData.depthMap.size() == depthData.size && imageData.GetSize() == depthData.size);
 		UseMask& useMask = arrUseMask[idxImage];
@@ -1803,7 +1803,7 @@ void DepthMapsData::DenseFuseDepthMaps(PointCloud& pointcloud, bool bEstimateCol
 					if (bEstimateNormal)
 						pointcloud.normals.emplace_back(normalized(fusedNormal));
 					if (bEstimateColor)
-						pointcloud.colors.emplace_back((fusedColor/(float)fusedPoints[0].size()).cast<uint8_t>());
+						pointcloud.colors.emplace_back((fusedColor/static_cast<float>(fusedPoints[0].size())).cast<uint8_t>());
 				}
 				if (!fusedViews.empty()) {
 					nDepths += fusedViews.size();
@@ -1961,7 +1961,7 @@ bool Scene::ComputeDepthMaps(DenseDepthMapData& data)
 		mesh.Release();
 	}
 	
-	// compute point-cloud from the existing mesh
+	// if no geometry available, estimate neighbor views based on image pairs baseline
 	if (IsEmpty() && !ImagesHaveNeighbors()) {
 		VERBOSE("warning: empty point-cloud, rough neighbor views selection based on image pairs baseline");
 		EstimateNeighborViewsPointCloud();
